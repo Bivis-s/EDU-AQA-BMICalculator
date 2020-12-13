@@ -94,8 +94,6 @@ public class BMICalculatorIndependentTests {
 
     @AfterClass
     public void after() throws InterruptedException {
-        // Wait sleepTimeBeforeClose sec and close window
-        Thread.sleep(Values.sleepTimeBeforeClose);
         webDriver.close();
     }
 }

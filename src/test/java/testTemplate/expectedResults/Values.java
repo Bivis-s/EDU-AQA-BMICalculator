@@ -2,7 +2,6 @@ package testTemplate.expectedResults;
 
 public final class Values {
     public final static String site = "https://healthunify.com/bmicalculator/";
-    public final static int sleepTimeBeforeClose = 0;
 
     public final static String starvationFt = "5";
     public final static String starvationInch = "11";
