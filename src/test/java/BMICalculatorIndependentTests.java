@@ -1,9 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.*;
 import testTemplate.Properties;
 import testTemplate.TestTemplate;
 import testTemplate.expectedResults.Values;
@@ -12,12 +11,14 @@ public class BMICalculatorIndependentTests {
     public WebDriver webDriver;
     TestTemplate testTemplate;
 
-    @BeforeClass
+    @BeforeMethod
     public void before() {
         // Set property
         Properties.setProperties();
         // Create webDriver object
-        webDriver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--incognito");
+        webDriver = new ChromeDriver(chromeOptions);
         testTemplate = new TestTemplate(webDriver);
         // Open site
         webDriver.get(Values.site);
@@ -92,8 +93,8 @@ public class BMICalculatorIndependentTests {
         testTemplate.checkElementCssAttribute(By.tagName("body"), "font-size", Values.expectedBodyFontSize);
     }
 
-    @AfterClass
-    public void after() throws InterruptedException {
+    @AfterMethod
+    public void after(){
         webDriver.close();
     }
 }
